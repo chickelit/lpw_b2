@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      body {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        place-items: center;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      form {
+        position: relative;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      form::after {
+        pointer-events: none;
+        position: absolute;
+        content: "";
+        inset: 0;
+        border-radius: inherit;
+        /* background: var(--secondary-color); */
+        background: var(--gray-50);
+        opacity: 0.6;
+        z-index: -1;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="./form-data.html" method="get">
+      <div class="form-field">
+        <label for="Matrícula">Matrícula</label>
+        <input name="Matrícula" type="text" required />
+      </div>
+      <div class="form-field">
+        <label for="Nome">Nome</label>
+        <input name="Nome" type="text" required />
+      </div>
+      <div class="form-field">
+        <label for="Telefone">Telefone</label>
+        <input name="Telefone" type="text" required />
+      </div>
+      <div class="form-field">
+        <label for="Gênero">Gênero</label>
+        <select name="Gênero" id="Gênero" required>
+          <option value="">Selecione</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
+        </select>
+      </div>
+      <div style="display: grid; grid-auto-flow: column; justify-content: space-between">
+        <button type="submit">Enviar</button>
+        <button type="reset">Limpar</button>
+      </div>
+    </form>
+  </body>
+</html>

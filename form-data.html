@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      body {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        place-items: center;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .data-container {
+        width: 300px;
+        min-height: 200px;
+        position: relative;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+        display: grid;
+        gap: 0.5rem;
+      }
+
+      .data-container::after {
+        pointer-events: none;
+        position: absolute;
+        content: "";
+        inset: 0;
+        border-radius: inherit;
+        background: var(--secondary-color);
+        opacity: 0.65;
+        z-index: -1;
+      }
+
+      .data-container h2 {
+        text-align: center;
+        color: white;
+      }
+
+      .data {
+				font-weight: 600;
+        color: white;
+        display: grid;
+        gap: 0.25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="data-container">
+      <h2>Dados</h2>
+      <div class="data"></div>
+    </div>
+
+    <script>
+      const params = Object.fromEntries(new URLSearchParams(document.location.search));
+      const dataContainer = document.querySelector(".data");
+
+      Object.entries(params).forEach(([key, value]) => {
+        const row = document.createElement("div");
+
+        row.appendChild(document.createTextNode(`${key}: ${value}`));
+
+        dataContainer.append(row);
+      });
+    </script>
+  </body>
+</html>
